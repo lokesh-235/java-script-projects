@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: auto;
+            width: 90%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+    #img
+    {
+        width: 500px;
+        height: 200px;
+
+    }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <button id="next" onclick="moveNext()">next</button>
+        <img src="./images/image1.jpeg" alt="" id="img">
+        
+        <button id="prev" onclick="movePrev()">Previous</button>
+        
+    </div>
+<script>
+    const prev=document.getElementById('prev');
+    const next=document.getElementById('next');
+    let img=document.getElementById('img');
+    const imgUrls=[
+        './images/image1.jpeg',
+        './images/image2.jpeg',
+        './images/image3.jpeg',
+        './images/image4.jpeg'
+    ]
+    let current=0;
+    img.src=imgUrls[current];
+
+    function movePrev(){
+        if(current==0)
+        current=imgUrls.length-1;
+        else
+        current--;
+    console.log(current);
+    img.src=imgUrls[current];
+    }
+
+    function moveNext(){
+        current++;
+        current=current%(imgUrls.length);
+        img.src=imgUrls[current];
+    }
+
+    interval=setInterval(
+        ()=>{
+            moveNext();
+        },5000
+    );
+</script>
+
+</body>
+</html>
